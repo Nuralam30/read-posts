@@ -1,4 +1,6 @@
 
 .all-posts{
     padding: 10px 100px;
+    display: flex;
+    flex-wrap: wrap;
 }
