@@ -1,0 +1,16 @@
+
+.navlist{
+    list-style: none;
+    display: flex;
+    background-color: #618d8d;
+    padding: 0px 100px;
+}
+.navlist li{
+    padding: 10px 20px;
+}
+.navlist li a{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #323033;
+}
