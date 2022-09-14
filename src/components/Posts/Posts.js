@@ -11,10 +11,13 @@ const Posts = () => {
             .then( res => res.json())
             .then( data => setPosts(data))
     })
+
+    const posts10 = posts.slice(0, 10)
+
     return (
         <div className='all-posts'>
             {
-                posts.map( po => <Post key={po.id} post={po}></Post>)
+                posts10.map( po => <Post key={po.id} post={po}></Post>)
             }
         </div>
     );

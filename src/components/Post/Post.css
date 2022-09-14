@@ -1,9 +1,15 @@
 .post{
-    max-width: 360px;
+    max-width: 550px;
     padding: 10px 15px;
     text-align: justify;
 }
 .post h3{
     text-transform: capitalize;
+    margin-bottom: 15px;
+}
+.post p{
     margin-bottom: 10px;
+}
+.post Link{
+    text-decoration: none;
 }

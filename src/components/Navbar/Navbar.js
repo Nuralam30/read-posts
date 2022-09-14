@@ -6,9 +6,9 @@ const Navbar = () => {
         <div>
             <nav>
                 <ul className="navlist">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#posts">Posts</a></li>
-                    <li><a href="#Help">Help</a></li>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/posts">Posts</a></li>
+                    <li><a href="/help">Help</a></li>
                 </ul>
             </nav>
         </div>
