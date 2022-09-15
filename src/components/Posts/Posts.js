@@ -10,7 +10,7 @@ const Posts = () => {
         fetch('https://jsonplaceholder.typicode.com/posts')
             .then( res => res.json())
             .then( data => setPosts(data))
-    })
+    }, [])
 
     const posts10 = posts.slice(0, 10)
 
