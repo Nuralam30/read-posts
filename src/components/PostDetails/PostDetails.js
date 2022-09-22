@@ -15,13 +15,16 @@ const PostDetails = () => {
             .then( data => setAllPosts(data))
     }, []);
 
-    const post = allPosts.find( po => po.id === postId);
-    console.log(post)
+    const posts10 = allPosts.slice(0, 10)
+    const post = posts10.find(po => po.id === parseInt(postId))
+    const {title, body} = post
     return (
         <div>
-            {/* <Post post={post}></Post>  */}
+            <h3>{title}</h3>
+            <p>{body}</p>
         </div>
     );
 };
+
 
 export default PostDetails;
