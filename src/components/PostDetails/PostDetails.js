@@ -1,27 +1,39 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
 import './PostDetails.css';
-import { useParams } from 'react-router-dom';
-// import Post from '../Post/Post';
+import { json, useParams } from 'react-router-dom';
 
 const PostDetails = () => {
 
     const { postId } = useParams();
     const [allPosts , setAllPosts] = useState([]);
 
-    useEffect( () => {
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then( res => res.json())
-            .then( data => setAllPosts(data))
-    }, []);
+    const request = async () => {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const json = await response.json();
+        // const data = () => json.setAllPosts(data)
+        console.log(json);
+    }
+    
+    request();
 
-    const post = allPosts.find(po => po.id === parseInt(postId))
-    console.log(typeof(post))
-    // const {title, body} = post;
+    // useEffect( () => {
+    //     fetch('https://jsonplaceholder.typicode.com/posts')
+    //         .then( res => res.json())
+    //         .then( data => setAllPosts(data))
+    // }, []);
+
+    // if(allPosts !== []){
+    //     const post = allPosts.find(po => po.id === parseInt(postId))
+    //     console.log(post)
+    // }
+
+    // console.log(allPosts)
+
     return (
         <div>
-            {/* <h3>{title}</h3>
-            <p>{body}</p> */}
+            {/* <h3>{post.title}</h3>
+            <p>{post.body}</p> */}
         </div>
     );
 };
