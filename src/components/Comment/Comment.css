@@ -1,0 +1,7 @@
+.comment{
+    max-width: 600px;
+    margin: 10px 0px;
+}
+.comment h3{
+    text-transform: capitalize;
+}

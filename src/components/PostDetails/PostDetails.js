@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect} from 'react';
 import './PostDetails.css';
 import { useParams } from 'react-router-dom';
+import Comment from '../Comment/Comment';
 
 const PostDetails = () => {
 
@@ -42,7 +43,7 @@ const PostDetails = () => {
             <p className='comments'>Comments</p>
             <div className="comment">
                 {
-                    postComments.map(comment => <li>{comment.body}</li>)
+                    postComments.map(com => <Comment comment = {com}> </Comment>)
                 }
             </div>
         </div>
