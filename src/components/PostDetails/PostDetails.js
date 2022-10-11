@@ -1,39 +1,50 @@
 import React from 'react';
 import { useState, useEffect} from 'react';
 import './PostDetails.css';
-import { json, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const PostDetails = () => {
 
     const { postId } = useParams();
     const [allPosts , setAllPosts] = useState([]);
+    const [allComments, setAllComments] = useState([]);
 
-    const request = async () => {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const json = await response.json();
-        // const data = () => json.setAllPosts(data)
-        console.log(json);
+    useEffect( () => {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then( res => res.json())
+            .then( data => setAllPosts(data))
+    }, []);
+
+
+    // find the exact post
+    let post = {}
+    if(allPosts.length > 0){
+        const post10 = allPosts.slice(0 , 10)
+        post = post10.find(po => po.id === parseInt(postId))
     }
-    
-    request();
 
-    // useEffect( () => {
-    //     fetch('https://jsonplaceholder.typicode.com/posts')
-    //         .then( res => res.json())
-    //         .then( data => setAllPosts(data))
-    // }, []);
+    // FIND COMMENTS FOR THE POST
+    useEffect( () => {
+        fetch('https://jsonplaceholder.typicode.com/comments')
+            .then( res => res.json())
+            .then( data => setAllComments(data))
+    }, []);
 
-    // if(allPosts !== []){
-    //     const post = allPosts.find(po => po.id === parseInt(postId))
-    //     console.log(post)
-    // }
+    const postComments = allComments.filter(comments => comments.postId === post.id)
+    console.log(postComments)
 
-    // console.log(allPosts)
 
+    // console.log(post)
     return (
-        <div>
-            {/* <h3>{post.title}</h3>
-            <p>{post.body}</p> */}
+        <div className = 'post_and_comments'>
+            <h2 className='post-title'>{post.title}</h2>
+            <p className='post-body'>{post.body}</p>
+            <p className='comments'>Comments</p>
+            <div className="comment">
+                {
+                    postComments.map(comment => <li>{comment.body}</li>)
+                }
+            </div>
         </div>
     );
 };
